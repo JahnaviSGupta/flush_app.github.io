@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 
 class User with ChangeNotifier {
@@ -15,6 +16,8 @@ class User with ChangeNotifier {
   String phoneNumber;
 
   bool active;
+
+  String favoriteBathroom;
 
   int lastOnlineTimestamp;
 
@@ -33,6 +36,7 @@ class User with ChangeNotifier {
       this.firstName = '',
       this.phoneNumber = '',
       this.lastName = '',
+      this.favoriteBathroom ='',
       this.active = false,
       lastOnlineTimestamp,
       appIdentifier,
@@ -48,13 +52,20 @@ class User with ChangeNotifier {
             appIdentifier ?? 'Instaflutter ${Platform.operatingSystem}';
 
   String fullName() {
-    return '$firstName $lastName';
+    return '$firstName ';
   }
+
+String myBathroom() {
+    return '$lastName';
+  }
+
+
 
   factory User.fromJson(Map<String, dynamic> parsedJson) {
     return User(
         email: parsedJson['email'] ?? '',
         firstName: parsedJson['firstName'] ?? '',
+        favoriteBathroom: parsedJson['favoriteBathroom'] ?? '',
         lastName: parsedJson['lastName'] ?? '',
         active: parsedJson['active'] ?? false,
         lastOnlineTimestamp: parsedJson['lastOnlineTimestamp'] is Timestamp
@@ -77,6 +88,7 @@ class User with ChangeNotifier {
       'settings': settings.toJson(),
       'phoneNumber': phoneNumber,
       'id': userID,
+      'favoriteBathroom': favoriteBathroom,
       'userID': userID,
       'active': active,
       'lastOnlineTimestamp': lastOnlineTimestamp,

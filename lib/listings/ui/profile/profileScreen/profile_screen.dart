@@ -20,7 +20,8 @@ import 'package:instaflutter/listings/ui/profile/api/profile_api_manager.dart';
 import 'package:instaflutter/listings/ui/profile/contactUs/contact_us_screen.dart';
 import 'package:instaflutter/listings/ui/profile/profileScreen/profile_bloc.dart';
 import 'package:instaflutter/listings/ui/profile/settings/settings_screen.dart';
-// import 'package:instaflutter/listings/ui/auth/signUp/sign_up_screen.dart';
+// import 'package:path/path.dart';
+// import 'package:instaflutter/listings/ui/auth/signUp/sign_up_screen.dart' as sigh_up;
 
 
 
@@ -333,23 +334,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                           ListTile(
-                            // dense: true,
-                            // onTap: () => context
-                            //     .read<ProfileBloc>()
-                            //     .add(TryToDeleteUserEvent()),
+                            dense: true,
+                            onTap: () => context
+                                .read<ProfileBloc>()
+                                .add(TryToDeleteUserEvent()),
                             title: Text(
-                            // The user’s favorite bathroom should appear at the bottom of the screen
-                            // on the profile. You don’t need to make it editable, just display it!
-                              "User's Favoutite Bathroom".tr(),
-                              // '$favoriteBathroom'
+                              currentUser.myBathroom(),
                               style: const TextStyle(fontSize: 16),
                             ),
                             leading: const Icon(
                               Icons.favorite,
-                              // CupertinoIcons.delete,
-                              color: Color.fromARGB(255, 19, 210, 210),
+                              color: Color.fromARGB(255, 26, 144, 253),
                             ),
                           ),
+                          // ListTile(
+                          //   dense: true,
+                          //   onTap: () => push(
+                          //       context,
+                          //       FavoriteListingsWrapperWidget(
+                          //         currentUser: currentUser,
+                          //       )),
+                          //   title: Text(
+                          //     'My Favorites'.tr(),
+                          //     style: const TextStyle(fontSize: 16),
+                          //   ),
+                          //   leading: const Icon(
+                          //     Icons.favorite,
+                          //     color: Color.fromARGB(255, 0, 57, 127),
+                          //   ),
+                          // ),
                           if (currentUser.isAdmin)
                             ListTile(
                               dense: true,

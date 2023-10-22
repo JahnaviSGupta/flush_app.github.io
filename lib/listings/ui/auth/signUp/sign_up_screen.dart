@@ -88,8 +88,9 @@ class _SignUpState extends State<SignUpScreen> {
                             password: password!,
                             image: _image,
                             lastName: lastName,
-                            // favoriteBathroom: favoriteBathroom!,
-                            firstName: firstName));
+                            // favoriteBathroom: favoriteBathroom,
+                            firstName: firstName,
+                            ));
                   } else if (state is SignUpFailureState) {
                     showSnackBar(context, state.errorMessage);
                   }
@@ -202,7 +203,7 @@ class _SignUpState extends State<SignUpScreen> {
                                 },
                                 textInputAction: TextInputAction.next,
                                 decoration: getInputDecoration(
-                                  hint: 'First Name'.tr(),
+                                  hint: 'Name'.tr(),
                                   darkMode: isDarkMode(context),
                                   errorColor:
                                       Theme.of(context).colorScheme.error,
@@ -210,25 +211,7 @@ class _SignUpState extends State<SignUpScreen> {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 16.0, right: 8.0, left: 8.0),
-                              child: TextFormField(
-                                textCapitalization: TextCapitalization.words,
-                                validator: validateName,
-                                onSaved: (String? val) {
-                                  lastName = val;
-                                },
-                                textInputAction: TextInputAction.next,
-                                decoration: getInputDecoration(
-                                  hint: 'Last Name'.tr(),
-                                  darkMode: isDarkMode(context),
-                                  errorColor:
-                                      Theme.of(context).colorScheme.error,
-                                  colorPrimary: Color(colorPrimary),
-                                ),
-                              ),
-                            ),
+                            
                             Padding(
                               padding: const EdgeInsets.only(
                                   top: 16.0, right: 8.0, left: 8.0),
@@ -304,20 +287,13 @@ class _SignUpState extends State<SignUpScreen> {
                                   top: 16.0, right: 8.0, left: 8.0),
                               child: TextFormField(
                                 textCapitalization: TextCapitalization.words,
-                                // validator: validateName,
+                                validator: validateName,
                                 onSaved: (String? val) {
-                                  // Store the result in the User model.
-                                  // The user input is stored in a variable called ‘favouriteBathroom’.
-                                  favoriteBathroom = val;
+                                  lastName = val;
                                 },
                                 textInputAction: TextInputAction.next,
                                 decoration: getInputDecoration(
-                                  //The hinted text should come from a separate file, and upon launching the
-                                  // screen, you should select one of the strings at random to display within
-                                  // the field. Have fun! You can come up with whatever example strings you’d
-                                  // like.
-                                  //Here the hintted text comes from an external file named 'hintText.darts'.
-                                  hint: "$theHintText",
+                                  hint: '$theHintText',
                                   darkMode: isDarkMode(context),
                                   errorColor:
                                       Theme.of(context).colorScheme.error,

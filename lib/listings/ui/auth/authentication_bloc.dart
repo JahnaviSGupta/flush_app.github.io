@@ -83,6 +83,8 @@ class AuthenticationBloc
               credential: event.credential,
               phoneNumber: event.phoneNumber,
               firstName: event.firstName,
+              // favoriteBathroom: event.favoriteBathroom,
+
               lastName: event.lastName,
               image: event.image);
       if (result is ListingsUser) {
@@ -99,7 +101,9 @@ class AuthenticationBloc
               password: event.password,
               image: event.image,
               firstName: event.firstName,
-              lastName: event.lastName);
+              // favoriteBathroom: event.favoriteBathroom,
+              lastName: event.lastName,
+              );
       if (result != null && result is ListingsUser) {
         user = result;
         emit(AuthenticationState.authenticated(user!));
